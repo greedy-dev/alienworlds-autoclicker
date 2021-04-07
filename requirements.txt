@@ -1,3 +1,4 @@
 pynput
 pyclick
+pyautogui
 pygame
