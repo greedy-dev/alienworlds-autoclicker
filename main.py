@@ -1,22 +1,25 @@
 import pyautogui
 import sys
 import time
+import random
+from pyclick import HumanClicker
 from pynput import keyboard
 
 exec_stop = False
 mode = "autoclicker"
 
-
 def run():
+    hc = HumanClicker()
     while exec_stop is False:
         if mode == "autoclicker":
             try:
-                pyautogui.moveTo(951, 946, 0.5)
-                pyautogui.click(951, 946)
-                pyautogui.moveTo(967, 656, 0.5)
-                pyautogui.click(967, 656)
-                pyautogui.moveTo(533, 863, 0.5)
-                pyautogui.click(533, 863)
+                hc.move((951, 946), 1)
+                hc.click()
+                hc.move((967, 656), 1)
+                hc.click()
+                time.sleep(random.uniform(0.5, 1))
+                hc.move((533, 863), 1)
+                hc.click()
             except:
                 print("An error occurred: ", sys.exc_info()[0])
         else:
