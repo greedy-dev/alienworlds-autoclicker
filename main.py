@@ -1,7 +1,6 @@
 import pyautogui
 import sys
 import time
-import random
 from pyclick import HumanClicker
 from pynput import keyboard
 
@@ -16,16 +15,19 @@ def run():
         if mode == "autoclicker":
             try:
                 # Configure positions based on your screen
-                hc.move((951, 946), 1)
+                hc.move((840, 710), 1)
                 hc.click()
-                hc.move((967, 656), 1)
+                time.sleep(5)
+                hc.move((841, 583), 1)
                 hc.click()
-                time.sleep(random.uniform(0.5, 1))
-                hc.move((533, 863), 1)
+                time.sleep(5)
+                hc.move((693, 667), 1)
                 hc.click()
+                time.sleep(5)
             except:
                 # If an error occurred
                 print("An error occurred: ", sys.exc_info()[0])
+                sys.exit(0)
         # If the script is in position logger mode
         else:
             try:
@@ -35,7 +37,6 @@ def run():
             except:
                 # If an error occurred
                 print("An error occurred: ", sys.exc_info()[0])
-    sys.exit(0)
 
 
 def on_press(key):
@@ -43,14 +44,13 @@ def on_press(key):
     if key == keyboard.Key.f11:
         global mode
         mode = "pos_logger" if mode == "autoclicker" else "autoclicker"
-        print("Toggling mode...")
-        return
+        print(f"Changing mode to {mode}")
     # When F12 key is pressed, stop executing the script
     elif key == keyboard.Key.f12:
-        print("Shutting down...")
         global exec_stop
         exec_stop = True
-        return
+        print("Shutting down...")
+        sys.exit(0)
 
 
 def main():
