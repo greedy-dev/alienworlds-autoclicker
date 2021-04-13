@@ -16,7 +16,7 @@ def run():
         # If the script is in autoclicker mode
         if mode == "autoclicker":
             try:
-                # Configure positions based on your screen
+                # Configure positions  of buttons based on your screen
                 # Mine button
                 if imgsearch.imagesearch("img/mine.png")[0] != -1:
                     hc.move((940, 1050), 1)
@@ -28,37 +28,9 @@ def run():
                     hc.move((930, 715), 1)
                     hc.click()
 
-                time.sleep(1)
-                # Uncompleted captcha
-                if imgsearch.imagesearch("img/uncomp_captcha.png")[0] != -1:
-                    hc.move((218, 552), 1)
-                    hc.click()
-
-                time.sleep(1)
-                # Buster extension button
-                if imgsearch.imagesearch("img/captcha_buttons.png")[0] != -1:
-                    hc.move((232, 811), 1)
-                    hc.click()
-
-                time.sleep(1)
-                # Space outside captcha block
-                if imgsearch.imagesearch("img/captcha_failed.png")[0] != -1:
-                    hc.move((195, 680), 1)
-                    hc.click()
-                    hc.move((290, 660), 1)
-                    hc.click()
-
-                # Re-generage captcha button, buster ext button
-                if imgsearch.imagesearch("img/captcha_ext_fail.png")[0] != -1:
-                    hc.move((195, 680), 1)
-                    hc.click()
-                    hc.move((290, 650), 1)
-                    hc.click()
-
-                time.sleep(1)
                 # Authorize transaction button
-                if imgsearch.imagesearch("img/comp_captcha.png")[0] != -1:
-                    hc.move((280, 650), 1)
+                if imgsearch.imagesearch("img/captcha_solved.png")[0] != -1:
+                    hc.move((265, 700), 1)
                     hc.click()
 
                 time.sleep(1)
