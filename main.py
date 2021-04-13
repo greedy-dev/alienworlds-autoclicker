@@ -1,11 +1,13 @@
 import pyautogui
 import sys
 import time
+import python_imagesearch as imgsearch
 from pyclick import HumanClicker
 from pynput import keyboard
 
 exec_stop = False
-mode = "autoclicker"
+# mode = "autoclicker"
+mode = "pos_logger"
 
 def run():
     hc = HumanClicker()
@@ -15,15 +17,34 @@ def run():
         if mode == "autoclicker":
             try:
                 # Configure positions based on your screen
-                hc.move((840, 710), 1)
-                hc.click()
-                time.sleep(5)
-                hc.move((841, 583), 1)
-                hc.click()
-                time.sleep(5)
-                hc.move((693, 667), 1)
-                hc.click()
-                time.sleep(5)
+                screen = imgsearch.region_grabber((0, 0, 1920, 1200))
+                if imgsearch.imagesearcharea("./img/mine.png", 775, 975, 1105, 1100, screen)[0] != -1:
+                    hc.move((940, 1050), 1)
+                    hc.click()
+
+                time.sleep(1)
+                if imgsearch.imagesearcharea("./img/claimtlm.png", 825, 665, 1100, 775, screen)[0] != -1:
+                    hc.move((930, 715), 1)
+                    hc.click()
+
+                time.sleep(1)
+                if imgsearch.imagesearcharea("./img/uncomp_captcha.png", 135, 495, 475, 605, screen)[0] != -1:
+                    hc.move((218, 552), 1)
+                    hc.click()
+
+                time.sleep(1)
+                if imgsearch.imagesearcharea("./img/captcha_buttons.png", 95, 775, 270, 850, screen)[0] != -1:
+                    hc.move((232, 811), 1)
+                    hc.click()
+                    time.sleep(30)
+
+                time.sleep(1)
+
+                if imgsearch.imagesearcharea("./img/comp_captcha.png", 155, 515, 315, 590, screen)[0] != -1:
+                    hc.move((280, 650), 1)
+                    hc.click()
+
+                time.sleep(1)
             except:
                 # If an error occurred
                 print("An error occurred: ", sys.exc_info()[0])
