@@ -28,6 +28,11 @@ def run():
                     hc.move((930, 715), 1)
                     hc.click()
 
+                # Close error message button
+                if imgsearch.imagesearch("img/timed_out.png")[0] != -1:
+                    hc.move((1450, 350), 1)
+                    hc.click()
+
                 # Authorize transaction button
                 if imgsearch.imagesearch("img/captcha_solved.png")[0] != -1:
                     hc.move((265, 700), 1)

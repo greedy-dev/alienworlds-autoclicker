@@ -1,5 +1,4 @@
 pynput
 pyclick
 pyautogui
-pygame
 python-imagesearch
