@@ -43,6 +43,8 @@ def run():
                 time.sleep(1)
                 # Space outside captcha block
                 if imgsearch.imagesearch("img/captcha_failed.png")[0] != -1:
+                    hc.move((195, 680), 1)
+                    hc.click()
                     hc.move((290, 660), 1)
                     hc.click()
 
