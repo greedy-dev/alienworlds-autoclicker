@@ -43,7 +43,14 @@ def run():
                 time.sleep(1)
                 # Space outside captcha block
                 if imgsearch.imagesearch("img/captcha_failed.png")[0] != -1:
-                    hc.move((60, 555), 1)
+                    hc.move((290, 660), 1)
+                    hc.click()
+
+                # Re-generage captcha button, buster ext button
+                if imgsearch.imagesearch("img/captcha_ext_fail.png")[0] != -1:
+                    hc.move((195, 680), 1)
+                    hc.click()
+                    hc.move((290, 650), 1)
                     hc.click()
 
                 time.sleep(1)
