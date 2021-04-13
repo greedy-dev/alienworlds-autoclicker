@@ -1,13 +1,13 @@
 import pyautogui
 import sys
 import time
-import python_imagesearch as imgsearch
+import python_imagesearch.imagesearch as imgsearch
 from pyclick import HumanClicker
 from pynput import keyboard
 
 exec_stop = False
-# mode = "autoclicker"
-mode = "pos_logger"
+mode = "autoclicker"
+# mode = "pos_logger"
 
 def run():
     hc = HumanClicker()
@@ -17,37 +17,45 @@ def run():
         if mode == "autoclicker":
             try:
                 # Configure positions based on your screen
-                screen = imgsearch.region_grabber((0, 0, 1920, 1200))
-                if imgsearch.imagesearcharea("./img/mine.png", 775, 975, 1105, 1100, screen)[0] != -1:
+                # Mine button
+                if imgsearch.imagesearch("img/mine.png")[0] != -1:
                     hc.move((940, 1050), 1)
                     hc.click()
 
                 time.sleep(1)
-                if imgsearch.imagesearcharea("./img/claimtlm.png", 825, 665, 1100, 775, screen)[0] != -1:
+                # Claim TLM button
+                if imgsearch.imagesearch("img/claim.png")[0] != -1:
                     hc.move((930, 715), 1)
                     hc.click()
 
                 time.sleep(1)
-                if imgsearch.imagesearcharea("./img/uncomp_captcha.png", 135, 495, 475, 605, screen)[0] != -1:
+                # Uncompleted captcha
+                if imgsearch.imagesearch("img/uncomp_captcha.png")[0] != -1:
                     hc.move((218, 552), 1)
                     hc.click()
 
                 time.sleep(1)
-                if imgsearch.imagesearcharea("./img/captcha_buttons.png", 95, 775, 270, 850, screen)[0] != -1:
+                # Buster extension button
+                if imgsearch.imagesearch("img/captcha_buttons.png")[0] != -1:
                     hc.move((232, 811), 1)
                     hc.click()
-                    time.sleep(30)
 
                 time.sleep(1)
-
-                if imgsearch.imagesearcharea("./img/comp_captcha.png", 155, 515, 315, 590, screen)[0] != -1:
+                # Authorize transaction button
+                if imgsearch.imagesearch("img/comp_captcha.png")[0] != -1:
                     hc.move((280, 650), 1)
+                    hc.click()
+
+                time.sleep(1)
+                # Back to mining hub button
+                if imgsearch.imagesearch("img/go_to_hub.png")[0] != -1:
+                    hc.move((518, 964), 1)
                     hc.click()
 
                 time.sleep(1)
             except:
                 # If an error occurred
-                print("An error occurred: ", sys.exc_info()[0])
+                print("An error occurred: ", sys.exc_info()[1])
                 sys.exit(0)
         # If the script is in position logger mode
         else:
@@ -57,7 +65,7 @@ def run():
                 time.sleep(1)
             except:
                 # If an error occurred
-                print("An error occurred: ", sys.exc_info()[0])
+                print("An error occurred: ", sys.exc_info()[2])
 
 
 def on_press(key):
