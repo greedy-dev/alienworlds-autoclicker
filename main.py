@@ -41,6 +41,12 @@ def run():
                     hc.click()
 
                 time.sleep(1)
+                # Space outside captcha block
+                if imgsearch.imagesearch("img/captcha_failed.png")[0] != -1:
+                    hc.move((60, 555), 1)
+                    hc.click()
+
+                time.sleep(1)
                 # Authorize transaction button
                 if imgsearch.imagesearch("img/comp_captcha.png")[0] != -1:
                     hc.move((280, 650), 1)
