@@ -19,29 +19,32 @@ def run():
                 # Configure positions  of buttons based on your screen
                 # Mine button
                 if imgsearch.imagesearch("img/mine.png")[0] != -1:
-                    hc.move((940, 1050), 1)
+                    hc.move((820, 920), 1)
                     hc.click()
 
-                time.sleep(1)
                 # Claim TLM button
                 if imgsearch.imagesearch("img/claim.png")[0] != -1:
-                    hc.move((930, 715), 1)
+                    hc.move((800, 630), 1)
                     hc.click()
 
                 # Close error message button
                 if imgsearch.imagesearch("img/timed_out.png")[0] != -1:
-                    hc.move((1450, 350), 1)
+                    hc.move((1265, 310), 1)
+                    hc.click()
+
+                # Main menu: Mine button
+                if imgsearch.imagesearch("img/mine_main_menu.png")[0] != -1:
+                    hc.move((1420, 350), 1)
                     hc.click()
 
                 # Authorize transaction button
                 if imgsearch.imagesearch("img/captcha_solved.png")[0] != -1:
-                    hc.move((265, 700), 1)
+                    hc.move((260, 700), 1)
                     hc.click()
 
-                time.sleep(1)
                 # Back to mining hub button
                 if imgsearch.imagesearch("img/go_to_hub.png")[0] != -1:
-                    hc.move((518, 964), 1)
+                    hc.move((430, 840), 1)
                     hc.click()
 
                 time.sleep(1)
